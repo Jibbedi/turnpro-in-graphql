@@ -29,6 +29,7 @@ Intermediate
 - [ ] Converting an existing REST API
 - [ ] Advanced Types (Union & Interfaces)
 - [ ] Testing
+- [ ] Error Handling
 - [ ] Caching with Data Loader
 
 Pro
