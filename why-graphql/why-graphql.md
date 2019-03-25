@@ -101,7 +101,7 @@ Perform an SSL handshake and close the connection. All of that is time-consuming
 We should think about graphs, not endpoints.
 Endpoints force us to make decisions about how our API is consumed.
 
-What we need is a way for our users to tell about how they plan to use our API.
+What we need is a way for our users to tell us about how they plan to use our API.
 A way to specify which data they require.
 That's what GraphQL is about. It's a language to formulate those needs.
 
