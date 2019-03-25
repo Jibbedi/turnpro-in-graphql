@@ -132,7 +132,7 @@ type Hotel {
 }
 ```
 
-The brackets around indicate that we are dealing with a list.
+The brackets around the type indicate that we are dealing with a list.
 A hotel can have multiple guests and multiple reviews.
 
 ## Non-null values
