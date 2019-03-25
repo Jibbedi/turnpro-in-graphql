@@ -99,7 +99,7 @@ We can add the reviews and guests to our schema as well.
 type Guest {
     firstName: String
     lastName: String
-    age: Int!
+    age: Int
 }
 
 type Review {
