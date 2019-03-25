@@ -1,8 +1,8 @@
 # Why GraphQL?
 
-So what does the perfect API looks like?
+What does the perfect API look like?
 It should be efficient, fast and easy to use for our users
-and it should be equally efficient, fast and easy to develop for us.
+and it should be equally efficient, fast and easy for us to develop.
 
 To be fast and efficient we need to carefully choose the data that we return from our API.
 If we return data that the user does not use or need we are not as efficient as we could be.
@@ -16,10 +16,11 @@ At the end of the day, our API is an interaction with others and it's our respon
 
 Efficiency and fastness will improve the overall performance of our application - which numerous studies have proven to be
 the number 1 factor for good user experience. Improving on these factors will literally increase our revenue.
-And hey - I'm more likely to keep an app that respectfully uses my data plan.
+And hey - I'm more likely to keep using an app that respectfully uses my data plan.
 
 An easy to use API can greatly decrease the time that is required to innovate on new features.
-Developers will have a much nicer time implementing a feature and we can roll them out more frequently to our customers.
+Developers will have a much nicer time implementing a feature and we can roll them out more frequently to our customers. And the easier an API is to use, the lower the risk of
+introducing bugs is.
 
 An API is about it's users.
 
@@ -32,60 +33,71 @@ It truly is.
 If you know what the users of your API want you can model it in a way that is
 efficient, fast and easy to use.
 
-But how do you know what the users want?
+But how do you know what data the users want?
 If the only user of your API is your co-worker in the next cubicle you can ask him.
 But what if you have an API that is consumed by multiple users? Do you know them all?
 Do they all have the same exact data requirements?
 
 How could we model an API that is efficient for every user we have?
-Well if we know them and can ask for their needs we can handcraft an API for every single user perfectly suited for his needs.
-That will make it efficient for them, but maintaining multiple APIs that we need to adjust
-whenever a user changes his requirements seems like an exhausting solution for us.
 
-And if we don't know all of our users we will never be able to craft an API especially for their needs.
+One option is to handcraft an API for each user.
+Depending on the number of different users you have this might sound like a suitable solution.
 
-What if we created a couple of small APIs that each return only a small subset of our data instead?
+But every time one of the users changes his data requirements we need to update their custom endpoint.
+Actually, we're now limiting the speed of our users' innovations by how quickly we can customize their endpoints.
+
+Custom endpoints for every client would make up for a perfect API if the cost
+of keeping them up and running wouldn't be so high.
+And if we don't know all of our users we will never be able to craft an API especially for their needs, anyway.
+
+So what if we created a couple of small APIs that each return only a small subset of our data instead?
 This way we can ask our users to tell us which slice of the data they are interested in by calling the corresponding API.
 
 Now if you're familiar with REST this might sound familiar to you.
-A REST API consists of multiple endpoints which each return a set of related data.
+A REST API consists of multiple endpoints which each return a set of related data. A resource.
 
-Our users tell us what slice of data they need and we serve only that slice.
+Our users tell us what resource they need and we serve only that.
 Oh. That knowledge.
 
-Yeah yeah, it's not perfect. We only know which chunk of data they are interested in,
+I mean, it's not perfect. We only know which set of data they are interested in,
 it's not perfectly granular, but it works. At least we optimized a bit without making
 it too hard to maintain our API.
 
 Well, it's true that our users are now responsible for gathering together all the information they need. Probably make a few API calls which can take up some time but at least they can tell us what they need. It's a little bit harder to use and it can be slower if you need a lot of different slices but what are the options?
 
 APIs are about its users. So who does know best which data is needed?
-Obviously, it's the user. Not the API developer.
 
-We need our users to tell us which data they need so we don't have to make assumptions.
-That's the thing about assumptions. They're usually wrong anyway.
+API developers know which data is available and how to get that data.
+We can only make assumptions on how this data is used - and there is a thing about assumptions. They're usually wrong.
 
-REST started with a good thought. Creating multiple endpoints and make users query for their needs slices of data will give us insight on which data our users need.
+We need our users to tell us which data they need so we don't have to make any assumptions.
 
-However, querying slices of data by making multiple HTTP requests can actually slow us down. It's can be hard and tedious to orchestrate the requests. For each slice of data, we need to connect to the server, which comes with some overhead and latency which eventually leads to a slower app.
+REST started with a good thought. Creating multiple endpoints and make users ask for specific slices of data will give us insight on which data our users need.
+
+However, relying on HTTP requests to select slices of data is not an optimal solution. It can be hard and tedious to orchestrate the requests. The users need to find out which requests can be sent concurrently and which requests needs to be performed sequentially.
+Sequential requests create a critical path and can dramatically slow down the user experience because we if one request takes longer the whole chain is delayed.
+
+Making an HTTP call also comes with a latency. We need to open a connection.
+Perform an SSL handshake and close the connection. All of that is time-consuming.
 
 ## Just tell us
 
-What we need is a way to tell our API what data we need without relying on HTTP endpoints.
-That's what GraphQL is about. It's a language to formulate that needs.
+What we need is a way to select the slices of data we need without relying on HTTP endpoints.
+That's what GraphQL is about. It's a language to formulate those needs.
 
-It's not a revolution. It's an evolution. It's the next logical step when you think
-about API development.
+It's exactly what SQL is for our databases.
+The database doesn't know which data it should return so we need to formulate a query with all of our requirements.
 
-By using GraphQL we shift the responsibilities. Before, the API developer was in charge of deciding what data gets sent to the user. Now his responsibility is to define what data is available and how this data can be accessed.
+By using GraphQL we shift the responsibilities. Before, the API developer was in charge of deciding what data gets sent to the user. Now that responsibility is to define what data is available and how this data can be accessed.
 
-It's the users' job to decide which data he needs and to formulate the query. After all, they know best.
-In a way, we enable them to create their own handcrafted, perfectly individualized API.
+It's the users' job to decide which data he needs and to formulate the appropriate query. After all, they know best.
+In a way, we enable them to create their own handcrafted, perfectly tailored API.
 
 That's efficiency and fastness at work.
 For our users as well as ourselves.
 
-GraphQL is about knowledge. It improves the way we use our API and
+GraphQL is about communication. It allows API developers to specify which data is available and
+API users to specify which data they need. This improves the way we use our API and
 it enables us to improve our tooling along with it.
 
 We can get insight on how our API is used,
@@ -97,3 +109,6 @@ validate their queries at build time and even generate code for them.
 
 All of that is possible because GraphQL allows developers to communicate
 their needs by using an expressing, yet simple to learn language.
+
+GraphQL is not a revolution. It's an evolution. It's the next logical step when you think
+about API development.
