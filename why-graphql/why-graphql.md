@@ -53,7 +53,7 @@ And if we don't know all of our users we will never be able to craft an API espe
 So what if we created a couple of small APIs that each return only a small subset of our data instead?
 This way we can ask our users to tell us which slice of the data they are interested in by calling the corresponding API.
 
-Now if you're familiar with REST this might sound familiar to you.
+Now if you've heard of REST this might sound familiar to you.
 A REST API consists of multiple endpoints which each return a set of related data. A resource.
 
 Our users tell us what resource they need and we serve only that.
