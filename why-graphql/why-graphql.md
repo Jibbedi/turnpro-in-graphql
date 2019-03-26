@@ -53,7 +53,7 @@ Or if - in the case of not knowing our users at all - they were possible at all.
 ### REST
 
 It seems like it would be better that the clients wouldn't need a custom endpoint.
-But we can't just return all the data we have. We're trying to be efficient and fast here.
+But we can't just return all the data we have for everyone, right?. We're trying to be efficient and fast here.
 So what if we created a couple of small APIs that each return only a small subset of our data instead?
 
 Now if you've heard of REST this might sound familiar to you.
