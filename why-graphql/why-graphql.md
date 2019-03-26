@@ -48,10 +48,12 @@ Actually, we're now limiting the speed of our users' innovations by how quickly 
 
 Custom APIs for every client would work perfectly if the cost
 of keeping them up and running wouldn't be so high.
-Or in the case of not knowing our users at all - even possible.
+Or if - in the case of not knowing our users at all - they were possible at all.
 
 ### REST
 
+It seems like it would be better that the clients wouldn't need a custom endpoint.
+But we can't just return all the data we have. We're trying to be efficient and fast here.
 So what if we created a couple of small APIs that each return only a small subset of our data instead?
 
 Now if you've heard of REST this might sound familiar to you.
@@ -122,14 +124,14 @@ GraphQL is about communication. It allows API developers to specify which data i
 API users to specify which data they need. This improves the way we use our API and
 it enables us to improve our tooling along with it.
 
-We can get insight on how our API is used.
+We can get insight into how our API is used.
 
 Our users tell us exactly which parts of the data they use.
 If we ever choose to remove parts of it we can notify them and
 guide them to the new solution. We can verify they've switched to it by monitoring all queries
 can know when it's safe to remove those parts.
 
-We can give users an estimate on how long it will take for their data to download.
+We can give users an estimate of how long it will take for their data to download.
 We can provide users of our data with autocomplete suggestions for their IDE,
 validate their queries at build time and even generate code for them.
 
