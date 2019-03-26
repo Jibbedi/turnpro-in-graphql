@@ -110,9 +110,10 @@ The database doesn't know which data it should return so we need to formulate a 
 
 By using GraphQL we shift the responsibilities. The API developer is not in charge of deciding which data gets sent to the user anymore. He's responsible for defining what data is available and how this data can be accessed. He's in charge to create the graph.
 
-It's the users' job to look at the available data and pick the one they. After all, they know best.
+It's the users' job to look at the available data and pick the one they need. After all, they know best.
 In a way, we enable them to create their own handcrafted, perfectly tailored API.
-And since the users can create it themselves, we're no longer a bottleneck for innovation.
+And since the users can create it themselves, they can change iterate on their product and change
+their data requirements as often and as quickly as they want.
 
 That's efficiency and fastness at work.
 For our users as well as ourselves.
@@ -121,10 +122,14 @@ GraphQL is about communication. It allows API developers to specify which data i
 API users to specify which data they need. This improves the way we use our API and
 it enables us to improve our tooling along with it.
 
-We can get insight on how our API is used,
-which part of the data might became irrelevant and can be removed and even
-give users an estimate on how long it will take for their data to download.
+We can get insight on how our API is used.
 
+Our users tell us exactly which parts of the data they use.
+If we ever choose to remove parts of it we can notify them and
+guide them to the new solution. We can verify they've switched to it by monitoring all queries
+can know when it's safe to remove those parts.
+
+We can give users an estimate on how long it will take for their data to download.
 We can provide users of our data with autocomplete suggestions for their IDE,
 validate their queries at build time and even generate code for them.
 
