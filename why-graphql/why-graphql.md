@@ -55,7 +55,7 @@ It seems like it would be better if the clients didn't need a custom API.
 But we can't just return all the data we have for everyone, right?. We're trying to be efficient and fast here.
 
 We need a way for our users to express their data needs.
-So what if we created a couple of small APIs that each return only a small subset of our data instead?
+So what if we created a couple of small APIs that each return only a subset of our data instead?
 
 Now if you've heard of REST this might sound familiar to you.
 A REST API consists of multiple endpoints.
