@@ -19,21 +19,20 @@ the number 1 factor for good user experience. Improving on these factors will li
 And hey - I'm more likely to keep using an app that respectfully uses my data plan.
 
 An easy to use API can greatly decrease the time that is required to innovate on new features.
-Developers will have a much nicer time implementing a feature and we can roll them out more frequently to our customers. And the easier an API is to use, the lower the risk of
-introducing bugs is.
+Developers will have a much nicer time implementing a feature and we can roll them out more frequently to our customers. And the easier an API is to use, the lower the risk of introducing bugs is.
 
-An API is about it's users.
+After all, an API is about it's users.
 
 ## Knowledge is everything
 
 You're probably familiar with the phrase _Knowledge is power._
-Or as I like to put it _Scientia potentia est_ because I like to fancy myself with latin quotes I copied from Wikipedia.
 
 It truly is.
 If you know what the users of your API want you can model it in a way that is
 efficient, fast and easy to use.
 
 But how do you know what data the users want?
+
 If the only user of your API is your co-worker in the next cubicle you can ask him.
 But what if you have an API that is consumed by multiple users? Do you know them all?
 Do they all have the same exact data requirements?
@@ -52,15 +51,17 @@ Or if - in the case of not knowing our users at all - they were possible at all.
 
 ### REST
 
-It seems like it would be better that the clients wouldn't need a custom endpoint.
+It seems like it would be better if the clients didn't need a custom API.
 But we can't just return all the data we have for everyone, right?. We're trying to be efficient and fast here.
+
+We need a way for our users to express their data needs.
 So what if we created a couple of small APIs that each return only a small subset of our data instead?
 
 Now if you've heard of REST this might sound familiar to you.
 A REST API consists of multiple endpoints.
 An endpoint is just an URL which returns a fixed structure of data. A resource.
 
-The point of having multiple endpoints is that we allow our users to request our data more granularly so we don't serve them with too much unnecessary information.
+The point of having multiple endpoints is to allow our users to request our data more granularly so we don't serve them with too much unnecessary information.
 This means we should keep our endpoints small and concise.
 
 Deciding which data belongs to a certain resource is up to the API developer.
@@ -80,7 +81,7 @@ This does not seem really romantic, does it?
 But the upside to that is that we are technically all friends with Kevin Bacon - at least to some [degree.](https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon)
 
 Think about it for a minute. How would you structure your API for this?
-Would you create an endpoint for a house? Will it include the information about the owner?
+Would you create an endpoint for all information about a house? Will it include the information about the owner?
 What about their families and their houses? Where do you draw the line?
 
 We don't know what our users need from our API so it's hard to come up with a solution.
@@ -92,51 +93,74 @@ Phew. If only we knew better.
 
 REST started with a good thought. Creating multiple endpoints and make users ask for specific slices of data.
 
-However, relying on HTTP requests to select slices of data is not an optimal solution. It can be hard and tedious to orchestrate the requests. The users need to find out which requests can be sent concurrently and which requests needs to be performed sequentially.
+However, relying on HTTP requests to select slices of data is not an optimal solution. It can be hard and tedious to orchestrate those requests. The users need to find out which requests can be sent concurrently and which requests needs to be performed sequentially.
 Sequential requests create a critical path and can dramatically slow down the user experience because we if one request takes longer the whole chain is delayed.
 
 Making an HTTP call also comes with a latency. We need to open a connection.
 Perform an SSL handshake and close the connection. All of that is time-consuming.
 
-## Just tell us
+Plus, all of this needs to be handled by every single user of our API. What a waste.
 
-We should think about graphs, not endpoints.
-Endpoints force us to make decisions about how our API is consumed.
+## Think about graphs, not endpoints
 
-What we need is a way for our users to tell us about how they plan to use our API.
-A way to specify which data they require.
-That's what GraphQL is about. It's a language to formulate those needs.
+The problem seems to reside in the way we approach our API development.
+Endpoints force us to make decisions about how an API is consumed.
+A decision that we as API developers can hardly make.
 
-It's exactly what SQL is for our databases.
-The database doesn't know which data it should return so we need to formulate a query with all of our requirements.
+We need to give our users a more powerful way to express their data requirements.
+That's what GraphQL is about.
 
-By using GraphQL we shift the responsibilities. The API developer is not in charge of deciding which data gets sent to the user anymore. He's responsible for defining what data is available and how this data can be accessed. He's in charge to create the graph.
+It's a way to shift the responsibilities.
+The API developer is no longer in charge of deciding which data gets sent to the user anymore.
+He's responsible for defining what data is available and how this data can be accessed. He's in charge to create a map of all the data that is available in our system and how this data is connected.
+He's responsible to create the graph.
 
-It's the users' job to look at the available data and pick the one they need. After all, they know best.
+By swapping out those predefined endpoints we end up with a much more flexible solution that enables
+our users to look at the available data and pick the pieces they need. After all, they know best.
 In a way, we enable them to create their own handcrafted, perfectly tailored API.
-And since the users can create it themselves, they can change iterate on their product and change
-their data requirements as often and as quickly as they want.
 
 That's efficiency and fastness at work.
 For our users as well as ourselves.
 
-GraphQL is about communication. It allows API developers to specify which data is available and
-API users to specify which data they need. This improves the way we use our API and
-it enables us to improve our tooling along with it.
+It's exactly what SQL is for our databases.
+The database doesn't know which data it should return so we need to formulate a query with all of our requirements.
+All the database knows is what data is available and how to get it.
 
-We can get insight into how our API is used.
+By allowing our data to be requested with queries we enable tooling that has not been possible before.
 
-Our users tell us exactly which parts of the data they use.
-If we ever choose to remove parts of it we can notify them and
-guide them to the new solution. We can verify they've switched to it by monitoring all queries
-can know when it's safe to remove those parts.
+We can analyze and validate those queries at build time
+and provide users with helpful feedback.
 
-We can give users an estimate of how long it will take for their data to download.
-We can provide users of our data with autocomplete suggestions for their IDE,
-validate their queries at build time and even generate code for them.
+We can give them an estimate of how long it will take for their data to download at run time,
+provide autocomplete suggestions for their IDE - and even generate code for them.
 
-All of that is possible because GraphQL allows developers to communicate
-their needs by using an expressing, yet simple to learn language.
+By specifying all the pieces of data they need we get useful insights into how our API is used.
+We understand which data is important so we know where we start improving things.
+
+And if we ever choose to remove pieces of data we can point our users to an alternative solution
+while being able to validate that each user eventually made the switch.
+Having those insights will improve how we think about versioning.
 
 GraphQL is not a revolution. It's an evolution. It's the next logical step when you think
 about API development.
+
+## GraphQL for...
+
+### Backend developers
+
+- ✅ Create an API that supports any number of users
+- ✅ Don't waste time creating endpoints dedicated for a single user
+- ✅ Get detailed insights about how your API is consumed
+
+### Frontend developers
+
+- ✅ No need to orchestrate API calls to multiple endpoints
+- ✅ Quickly iterate on your UI without depending on changes from a backend developer
+- ✅ Improve your apps data consumption by getting perfectly tailored data
+- ✅ Have the flexibility to customize the request data depending on situations like network status and screen size
+
+### Managers
+
+- ✅ Frontend and backend teams don't depend as much on each other
+- ✅ Optimized data consumptions increases app performance which can increase revenue
+- ✅ Easier implementation will increase velocity and decrease bugs
