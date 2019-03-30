@@ -163,4 +163,5 @@ about API development.
 
 - ✅ Frontend and backend teams don't depend as much on each other
 - ✅ Optimized data consumptions increases app performance which can increase revenue
-- ✅ Easier implementation will increase velocity and decrease bugs
+- ✅ Easier implementation will increase development velocity and decrease bugs
+- ✅ Less additional effort to support multiple clients like iOS, Android and web
