@@ -112,8 +112,7 @@ That's what GraphQL is about.
 
 It's a way to shift the responsibilities.
 The API developer is no longer in charge of deciding which data gets sent to the user anymore.
-He's responsible for defining what data is available and how this data can be accessed. He's in charge to create a map of all the data that is available in our system and how this data is connected.
-He's responsible to create the graph.
+He's responsible for defining what data is available and how this data can be accessed. He's in charge of creating a map of all the data that is available in our system and how this data is connected. He's responsible to create the graph.
 
 By swapping out those predefined endpoints we end up with a much more flexible solution that enables
 our users to look at the available data and pick the pieces they need. After all, they know best.
@@ -131,7 +130,7 @@ By allowing our data to be requested with queries we enable tooling that has not
 We can analyze and validate those queries at build time
 and provide users with helpful feedback.
 
-We can give them an estimate of how long it will take for their data to download at run time,
+We can give them an estimate of how long it will take for their data to download at runtime,
 provide autocomplete suggestions for their IDE - and even generate code for them.
 
 By specifying all the pieces of data they need we get useful insights into how our API is used.
@@ -162,6 +161,6 @@ about API development.
 ### Managers
 
 - ✅ Frontend and backend teams don't depend as much on each other
-- ✅ Optimized data consumptions increases app performance which can increase revenue
+- ✅ Optimized data consumption increases app performance which can increase revenue
 - ✅ Easier implementation will increase development velocity and decrease bugs
 - ✅ Less additional effort to support multiple clients like iOS, Android and web
