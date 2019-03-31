@@ -7,6 +7,7 @@ and it should be equally efficient, fast and easy for us to develop.
 To be fast and efficient we need to carefully choose the data that we return from our API.
 If we return data that the user does not use or need we are not as efficient as we could be.
 
+We're not only doing more work on our servers than we need to. We're also wasting bandwidth.
 Every byte that we make our users download will literally cost time
 and - especially on mobile network plans - money.
 
@@ -43,7 +44,8 @@ One option is to handcraft an API for each user.
 Depending on the number of different users you have this might sound like a suitable solution.
 
 But every time one of the users changes his data requirements we need to update their custom API.
-Actually, we're now limiting the speed of our users' innovations by how quickly we can customize it.
+Actually, we're now limiting the speed of our users' innovations by how quickly we can make changes to it.
+And is it really efficient to create and maintain a different endpoint for every single user?
 
 Custom APIs for every client would work perfectly if the cost
 of keeping them up and running wouldn't be so high.
@@ -99,7 +101,7 @@ Sequential requests create a critical path and can dramatically slow down the us
 Making an HTTP call also comes with a latency. We need to open a connection.
 Perform an SSL handshake and close the connection. All of that is time-consuming.
 
-Plus, all of this needs to be handled by every single user of our API. What a waste.
+Plus, all of the connection orchestration needs to be handled by every single user of our API individually. What a waste.
 
 ## Think about graphs, not endpoints
 
@@ -117,6 +119,9 @@ He's responsible for defining what data is available and how this data can be ac
 By swapping out those predefined endpoints we end up with a much more flexible solution that enables
 our users to look at the available data and pick the pieces they need. After all, they know best.
 In a way, we enable them to create their own handcrafted, perfectly tailored API.
+
+We only serve the exact data that is requirements without being forced to create a dedicated endpoint
+for each user.
 
 That's efficiency and fastness at work.
 For our users as well as ourselves.
@@ -151,7 +156,7 @@ about API development.
 
 ### Backend developers
 
-- ✅ Create an API that supports any number of users
+- ✅ Create a flexible API that supports any number of users
 - ✅ Don't waste time creating endpoints dedicated for a single user
 - ✅ Get detailed insights about how your API is consumed
 
